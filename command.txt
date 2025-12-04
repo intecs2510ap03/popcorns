@@ -1,0 +1,19 @@
+①以下フォルダに移動して、フォルダを作成する
+C:\xampp\htdocs
+フォルダ名「popcorns」
+
+②GitBushを開く
+
+③GitBushに以下コマンドをコピペ＆ペースト（ディレクトリを指定）
+cd /c/xampp/htdocs/popcorns/
+
+④GitBushに以下コマンドをコピペ＆ペースト（対象フォルダを初期化）
+git init
+
+⑤メインブランチとする
+git branch -M main
+
+⑥リモートブランチを追加する
+git remote add origin https://github.com/intecs2510ap03/popcorns.git
+
+⑦
