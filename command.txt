@@ -1,3 +1,5 @@
+⓪Gmailを開いて、GitHubの確認ボタンを押してください。
+
 ①以下フォルダに移動する
 C:\xampp\htdocs
 
@@ -20,24 +22,51 @@ ll(小文字のエルが２つです）
 
 ⑦ブランチを作成する
 
-★平山さん担当分
+★平さん担当分
 git branch index
 git branch userAdd
 
-★中村さん担当分
+★中さん担当分
 git branch questions
 
-★谷さん担当分
+★Tさん担当分
 git branch questionInput
 git function
 
-★大屋さん担当分
+★大さん担当分
 git answer
 
-★山元担当分
+★山げん担当分
 git detail
 
-⑥
+
+⑧作成したブランチの一覧を表示する
+git branch
+
+⑨ブランチをスイッチする
+git switch (自分が作ったブランチ名）
+例：山げんなら「git switch detail」
+
+⑩ブランチ一覧を表示して変更したことを確認する
+git branch
+
+⑪ファイルの中身を変更してみる
+例：山げんなら「detail.php」を開き
+　以下のように変更する（４行目）
+　修正前：<?php echo 'detail.php'; ?>
+　修正前：<?php echo 'detail　テスト'; ?>
+
+⑫変更したファイルを保存して閉じる
+
+⑬GitBushに以下コマンドを入力し、ステータスを確認する
+git status
+
+⑫変更内容をローカルリポジトリにコミットする
+git commit -m 'ファイル変更とコミットの練習'
+
+⑬作成したブランチをリモートリポジトリに反映する
+git push origin (自分が作ったブランチ名）
+山げんなら、git push origin detail
 
 
 
