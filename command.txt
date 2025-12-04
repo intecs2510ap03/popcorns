@@ -1,19 +1,65 @@
-①以下フォルダに移動して、フォルダを作成する
+①以下フォルダに移動する
 C:\xampp\htdocs
-フォルダ名「popcorns」
 
 ②GitBushを開く
 
-③GitBushに以下コマンドをコピペ＆ペースト（ディレクトリを指定）
-cd /c/xampp/htdocs/popcorns/
+③GitBushに以下コマンドをコピペ＆ペースト（ディレクトリの移動）
+cd /c/xampp/htdocs/
 
-④GitBushに以下コマンドをコピペ＆ペースト（対象フォルダを初期化）
-git init
+④リモートリポジトリの内容をローカルリポジトリに取得する
+git clone git@github.com:intecs2510ap03/popcorns.git
+※C:\xampp\htdocs\popcornsのフォルダができたこと、
+中身が入っていることを確認する
 
-⑤メインブランチとする
+⑤GitBushに以下コマンドを入力する（ディレクトリの移動）
+cd /c/xampp/htdocs/popcorns
+
+⑥GitBushに以下コマンドを入力し、ファイルが入っていることを確認
+ll(小文字のエルが２つです）
+
+
+⑦ブランチを作成する
+
+★平山さん担当分
+git branch index
+git branch userAdd
+
+★中村さん担当分
+git branch questions
+
+★谷さん担当分
+git branch questionInput
+git function
+
+★大屋さん担当分
+git answer
+
+★山元担当分
+git detail
+
+⑥
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------
+以下無視してください。
+
+⑦メインブランチとする
 git branch -M main
 
-⑥リモートブランチを追加する
+⑧リモートブランチを追加する
 git remote add origin https://github.com/intecs2510ap03/popcorns.git
 
-⑦
+⑨
+
