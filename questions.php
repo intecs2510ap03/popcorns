@@ -1,5 +1,6 @@
-<?php require '../header.php'; ?>
+<?php require 'header.php'; ?>
+<?php require 'function.php';?>
 
 <?php echo 'questions.php'; ?>
 
-<?php require '../footer.php'; ?>
+<?php require 'footer.php'; ?>
