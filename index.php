@@ -5,9 +5,6 @@
 <!--会員ログインチェック -->
 <?php
     $msg = '';
-    if (isset($_SESSION['user'])) {
-        header('Location: questions.php');
-    } 
 
     if (isset($_REQUEST['userId']) && isset($_REQUEST['userPw'])) {
         
@@ -28,32 +25,25 @@
                 'name'=>$row['name']
             ];
         }
-
-        // ログイン判定
-        if (isset($_SESSION['user'])) {
-            header('Location: questions.php');
-        } else {
-            $msg = 'ログインまたはパスワードが違います。';
-        }
     }
-?>
 
-<?php
+    // 本文編集
     if (isset($msg)) {
         echo $msg;
     }
+
+    if (isset($_SESSION['user'])) {
+        // header('Location: questions.php');
+        echo '<a href="questionInput.php">質問入力</a><br>';
+        echo '<a href="userAdd.php">ログアウト</a>';
+    } else {
+        $msg = 'ログインまたはパスワードが違います。';
+        echo '<form action ="index.php" method="post">';
+        echo 'ログイン名<input type="text" name="userId"><br>';
+        echo 'パスワード<input type="password" name="userPw"><br>';
+        echo '<input type="submit" value="ログイン">';
+        echo '</form>';
+    }
 ?>
-
-<form action ="index.php" method="post">
-    ログイン名<input type="text" name="userId"><br>
-    パスワード<input type="password" name="userPw"><br>
-    <input type="submit" value="ログイン">
-</form>
-<a href="userAdd.php">新規登録</a>
-
-<form action ="index.php" method="post">
-    <input type="submit" value="ログアウト">
-</form>
-
 
 <?php require 'footer.php'; ?>
