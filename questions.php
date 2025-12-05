@@ -1,6 +1,6 @@
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
 
-<?php echo 'questions.php'; ?>
+<?php echo 'ポップコーンズ'; ?>
 
 <?php require 'footer.php'; ?>
