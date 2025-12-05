@@ -1,6 +1,13 @@
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
+<?php 
+$pdo = Connect();
 
-<?php echo 'ポップコーンズ'; ?>
+foreach ($pdo->query('select * from question') as $row)
+    echo $row['userId'];
+    echo $row['question'];
+    echo $row['date'];
+     
 
-<?php require 'footer.php'; ?>
+
+
