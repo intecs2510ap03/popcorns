@@ -29,5 +29,22 @@
         $name = $sql->fetchColumn(); 
         return $name;
     }
+
+    // getAnswersByQuestionId関数
+    // 書き方　getAnswersByQuestionId($id,$pdo);
+    function getAnswersByQuestionId($id,$pdo){
+        $sql = $pdo->prepare('select * from answer where questionId=? order by date desc, id');
+        $sql->execute([$id]);
+        $answer_All = $sql->fetchAll();
+        return $answer_All;
+    }
 	
+    // getQuestionById関数
+    // getQuestionById($id,$pdo);
+    function getQuestionById($id,$pdo){
+        $sql = $pdo->prepare('select * from question where id=?');
+        $sql->execute([$id]);
+        return $sql;
+    }
+
 ?>

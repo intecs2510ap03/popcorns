@@ -6,18 +6,23 @@
     // PDO関数
     $pdo = Connect();
 
-    // 質問を全部取得
-    $question_all = getQuestion($pdo);
+    // 質問Idを変数に格納
+    $questionId = $_REQUEST['questionId'];
     
-
+    // 質問タイトル
     echo '<p>質問</p>';
-    echo '<p>';
-    $questionId = $_REQUEST['questionId'] -1;
-    // 質問内容
-    $name = getUserName($question_all[$questionId]['userId'],$pdo);
-    echo $name, '<br>';
-    echo $question_all[$questionId]['question'], '<br>';
-    echo $question_all[$questionId]['date'], '<br>';
+
+    // 質問内容取得
+    $question = getQuestionById($questionId,$pdo);    
+    
+    foreach ($question as $row) {
+        echo '<p">';
+        // ユーザの名前を取得する
+        $name = getUserName($row['userId'],$pdo);
+        echo $name, '<br>';
+        echo $row['question'], '<br>';
+        echo $row['date'];
+    }
 
     // 回答ボタン
     echo '<form action="answer.php" method="post">';
@@ -25,26 +30,34 @@
     echo '<input type="submit" value="回答">';
     echo '</form>';
     echo '</p>';
-
-    // 回答内容
-    echo '<p class="answer-box">回答</p>';
-
-    $sql = $pdo->prepare('select * from answer where questionId=?');
-    $sql->execute([$_REQUEST['questionId']]);
-    $answer_All = $sql->fetchAll();
     
-    foreach ($answer_All as $row) {
-        echo '<p class="answer-box">';
-        // ユーザの名前を取得する
-        $name = getUserName($row['userId'],$pdo);
-        echo $name, '<br>';
-        echo $row['answer'], '<br>';
-        echo $row['date'];
-        echo '<form action="detail.php" method="post">';
-        echo '<input type="hidden" name="questionId" value="', $row['id'] ,'">';
-        echo '<input type="submit" value="詳細">';
-        echo '</form>';
-        echo '</p>';
+    // 回答内容一覧取得
+    $answer_All = getAnswersByQuestionId($questionId,$pdo);
+    
+    if (!empty($answer_All)) {
+        
+        // 回答タイトル
+        echo '<p class="answer-box">回答</p>';
+
+        // 回答内容
+        foreach ($answer_All as $row) {
+            echo '<p class="answer-box">';
+            // ユーザの名前を取得する
+            $name = getUserName($row['userId'],$pdo);
+            echo $name, '<br>';
+            echo $row['answer'], '<br>';
+            echo $row['date'];
+
+            // ユーザーの投稿内容なら削除ボタンの表示
+            if ($_SESSION['user']['id'] == $row['userId']) {
+                echo '<form action="delete.php" method="post">';
+                echo '<input type="hidden" name="questionId" value="', $row['id'] ,'">';
+                echo '<input type="submit" value="削除">';
+                echo '</form>';
+            }
+            
+            echo '</p>';
+        }
     }
 
 ?>
