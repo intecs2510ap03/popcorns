@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php ob_start(); ?>
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
 
@@ -49,29 +50,19 @@ echo '<input type="submit" value="登録">';
 
 if (isset($_POST['answer'])) {
     $answer = $_POST['answer'];
-    $questionId = (int)$_POST['question_id']; // 空白除去
+    $userId = $_SESSION['user']['id'];
+    $questionId = (int)$_POST['question_id']; // 空白除去_
+    $answer = mb_convert_kana($answer, 's'); // 全角スペースを半角に変換
     if (trim($answer) === "") {
         echo '回答を入力してください';
     } elseif (mb_strlen($answer) > 250) {
         echo '回答は250文字以内で入力してください';
-    } elseif (addAnswer($_SESSION['user']['id'], $question_id, $answer)) {
-        header('Location: questions.php');
-        exit;
-    } else {
-        echo '回答の登録に失敗しました';
-    }
-}
-
-           // values(null,$question_id,$question_userId,$answer,date,dateFIg)' ); 
-            //id,questionId,userId,answer,date,dateFlg
-
-//addQuestion
-    /* 書き方　addQuestion($_SESSION['user']['id'], $_POST['question'])
-    function addQuestion($userId, $question){
-    $pdo = Connect();
-    $sql = $pdo->prepare('INSERT INTO question VALUES (null, ?, ?, now(), 0)');
-    return $sql->execute([$userId,$question]);
-    }*/
+    } elseif (addAnswer($questionId,$userId,$answer)) {
+    header('Location: detail.php?question_id=' . $questionId); 
+    exit;     
+} else {
+    echo '回答の登録に失敗しました';
+    }}
 
 ?>
 
