@@ -12,8 +12,8 @@
         $sql->execute([$userid, $userpw]);
         return $sql;
     }
-	//addQuestion
-    //書き方　addQuestion($_SESSION['user']['id'], $_POST['question'])
+	//addQuestion関数
+    //書き方　addQuestion($_SESSION['user']['id'], $_POST['question']);
     function addQuestion($userId, $question){
     $pdo = Connect();
     $sql = $pdo->prepare('INSERT INTO question VALUES (null, ?, ?, now(), 0)');
@@ -60,4 +60,21 @@
         return $sql;
     }
 
+    // deleteQuestion関数
+    // deleteQuestion();
+    function deleteQuestion($questionId){
+        $pdo = Connect();
+        $sql1 = $pdo->prepare('UPDATE answer SET deleteFlg=1 WHERE questionId=?');
+        $sql1->execute($questionId)
+        $sql2 = $pdo->prepare('UPDATE question SET deleteFlg=1 WHERE Id=?');
+        $sql2->execute($)
+    }
+
+    // addUser関数
+    // addUser($_POST['loginId'],$_POST['password'],$_POST['name']);
+    function addUser($userId,$userPw,$viewName){
+    $pdo = Connect();
+    $sql = $pdo->prepare('INSERT INTO user(id, loginId, password, name) VALUES (null, ?, ?, ?)');
+    return $sql->execute([$userId,$userPw,$viewName]);
+    }
 ?>
