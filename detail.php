@@ -7,7 +7,7 @@
     $pdo = Connect();
 
     // 質問Idを変数に格納
-    $questionId = $_REQUEST['questionId'];
+    $questionId = $_GET['questionId'];
     
     // 質問タイトル
     echo '<p>質問</p>';
@@ -25,7 +25,7 @@
     }
 
     // 回答ボタン
-    echo '<form action="answer.php" method="post">';
+    echo '<form action="answer.php" method="get">';
     echo '<input type="hidden" name="questionId" value="', $questionId ,'">';
     echo '<input type="submit" value="回答">';
     echo '</form>';
@@ -49,9 +49,9 @@
             echo $row['date'];
 
             // ユーザーの投稿内容なら削除ボタンの表示
-            if ($_SESSION['user']['id'] == $row['userId']) {
+            if (isset($_SESSION['user']) && $_SESSION['user']['id'] == $row['userId']) {
                 echo '<form action="delete.php" method="post">';
-                echo '<input type="hidden" name="questionId" value="', $row['id'] ,'">';
+                echo '<input type="hidden" name="qunestioId" value="', $row['id'] ,'">';
                 echo '<input type="submit" value="削除">';
                 echo '</form>';
             }
