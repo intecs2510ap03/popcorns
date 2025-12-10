@@ -12,7 +12,33 @@ nav ul {
     gap: 40px;
 }
 
+h1{
+    border-left:7px solid #1d7bb5;
+    padding-left: 15px;
+    text-align:left;
+    color:#767676;
+}
+
+h2{
+    border-left:7px solid #1d7bb5;
+    padding-left: 15px;
+    text-align:left;
+    color:#767676;
+}
+ 
+.main{
+    margin:90px auto 90px auto;
+    max-width:1300px;
+}
+
 /* すべてのページに適応される設定 ヘッダー*/
+
+.header-top{
+    color: #f9f9f9;
+    background-color: #1d7bb5;
+    max-width: 100%;
+}
+
 
 /* すべてのページに適応される設定 フッター*/
 
@@ -30,6 +56,20 @@ nav ul {
 
 /* answer.php */
 
+.name{
+    font-weight: bold;
+    font-size: 1.3rem;
+    line-height: 1.7;
+}
+.date{
+    line-height: 1.7;
+    font-size: 0.8rem;
+}
+
+.question-section{
+    margin: 20px auto 40px auto;
+}
+
 
 .questionbox {
     /* 枠線（ボーダー）を追加 */
@@ -41,9 +81,62 @@ nav ul {
     /* 背景色（オプション） */
     background-color: #f9f9f9;
     font-size: 20px;
+    border-radius: 25px;
 }
 
-.return{
-    display: flex;
+.answer-section {
+    display: flex; 
+    flex-direction: column;
+    margin-left:18%;  
+    
+}
+
+.anstexbox {
+    border: 2px solid #000000;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    font-size: 20px;
+    display: inline-block;
+    
+}
+
+.main form,textarea {
+    display: block;  
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  color: #f9f9f9;
+  background-color: #1d7bb5;
+  border-radius: 20%;
+  padding: 12px;
+  transition: .4s;
+  border: 2px solid transparent;
+  margin: 30px 0 30px 0;
+}
+
+.touroku-btn {
+    display: block; 
+    margin-left: 0; /* または、回答フォームとボタンの間に少しスペースを空ける場合は 10px など */
+    margin-right: auto; /* 他の要素を右に押し付けたい場合 */
+   font-size: 16px;
+   font-weight: bold;
+  color: #1d7bb5;
+  background-color: #f9f9f9;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 2px solid #1d7bb5
+}
+.touroku-btn:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #f9f9f9;     /* 背景色     */
+  background    : #1d7bb5; 
+  border: 2px solid transparent;    /* 文字色     */
 }
 
