@@ -2,6 +2,7 @@
 <html lang="ja">
 <meta charset="UTF-8">
 <head>
+	<div class="header-top">
 	<title>アイデア倉庫</title>
 <link rel="stylesheet" href="./style/style.css"	>
 
@@ -22,6 +23,7 @@
 
 	</ul>
 </nav>
+</div>
 
 </head>
 <body>
