@@ -12,19 +12,14 @@
         $sql->execute([$userid, $userpw]);
         return $sql;
     }
-	//addQuestion関数
-    //書き方　addQuestion($_SESSION['user']['id'], $_POST['question']);
-    function addQuestion($userId, $question){
-    $pdo = Connect();
-    $sql = $pdo->prepare('INSERT INTO question VALUES (null, ?, ?, now(), 0)');
-    return $sql->execute([$userId,$question]);
-    }
 
-    // function addQuestion($questionId,$userId, $answer){
-    // $pdo = Connect();
-    // $sql = $pdo->prepare('INSERT INTO answer VALUES (null, ?, ?, ?, now(), 0)');
-    // return $sql->execute([$questionId,$userId,$answer]);
-    // }
+    // addUser関数
+    // 書き方　addUser($_POST['loginId'],$_POST['password'],$_POST['name']);
+    function addUser($userId,$userPw,$viewName){
+    $pdo = Connect();
+    $sql = $pdo->prepare('INSERT INTO user(id, loginId, password, name) VALUES (null, ?, ?, ?)');
+    return $sql->execute([$userId,$userPw,$viewName]);
+    }
 
     // getQuestion関数
     // 書き方　getQuestion($pdo);
@@ -34,13 +29,35 @@
         return $user_All;
     }
 
-    // getUserName関数
-    // 書き方　getUserName($id,$pdo);
-    function getUserName($id,$pdo){
-        $sql = $pdo->prepare('select name from user where id=?');
+	// addQuestion関数
+    // 書き方　addQuestion($_SESSION['user']['id'], $_POST['question']);
+    function addQuestion($userId, $question){
+    $pdo = Connect();
+    $sql = $pdo->prepare('INSERT INTO question VALUES (null, ?, ?, now(), 0)');
+    return $sql->execute([$userId,$question]);
+    }
+
+    // deleteQuestion関数
+    // 書き方　deleteQuestion($_POST['questionId']);
+    function deleteQuestion($questionId){
+        $pdo = Connect();
+        $sql1 = $pdo->prepare('UPDATE answer SET deleteFlg=1 WHERE questionId=?');
+        $answerDeleteFlgOn = $sql1->execute([$questionId]);
+        $sql2 = $pdo->prepare('UPDATE question SET deleteFlg=1 WHERE Id=?');
+        $questionDeleteFlgOn = $sql2->execute([$questionId]);
+        if($answerDeleteFlgOn && $questionDeleteFlgOn) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    // getQuestionById関数
+    // 書き方　getQuestionById($id,$pdo);
+    function getQuestionById($id,$pdo){
+        $sql = $pdo->prepare('select * from question where id=?');
         $sql->execute([$id]);
-        $name = $sql->fetchColumn(); 
-        return $name;
+        return $sql;
     }
 
     // getAnswersByQuestionId関数
@@ -51,30 +68,46 @@
         $answer_All = $sql->fetchAll();
         return $answer_All;
     }
-	
-    // getQuestionById関数
-    // getQuestionById($id,$pdo);
-    function getQuestionById($id,$pdo){
-        $sql = $pdo->prepare('select * from question where id=?');
-        $sql->execute([$id]);
-        return $sql;
-    }
 
-    // deleteQuestion関数
-    // deleteQuestion();
-    function deleteQuestion($questionId){
-        $pdo = Connect();
-        $sql1 = $pdo->prepare('UPDATE answer SET deleteFlg=1 WHERE questionId=?');
-        $sql1->execute($questionId)
-        $sql2 = $pdo->prepare('UPDATE question SET deleteFlg=1 WHERE Id=?');
-        $sql2->execute($)
-    }
-
-    // addUser関数
-    // addUser($_POST['loginId'],$_POST['password'],$_POST['name']);
-    function addUser($userId,$userPw,$viewName){
+    // addAanswer関数
+    // 書き方　addAnswer($questionId,$userId,$answer);
+    function addAnswer($questionId,$userId,$answer){
+        try{
     $pdo = Connect();
-    $sql = $pdo->prepare('INSERT INTO user(id, loginId, password, name) VALUES (null, ?, ?, ?)');
-    return $sql->execute([$userId,$userPw,$viewName]);
+    $sql = $pdo->prepare('INSERT INTO answer VALUES (null,?,?,?,now(),0)');
+    $return = $sql->execute([$questionId,$userId,$answer]);
+    return $return;
+    } catch (PDOException $e) {
+        // ここでエラーメッセージを出力することで、失敗原因がわかる
+        error_log('DB登録エラー: ' . $e->getMessage() . ' SQLSTATE: ' . $e->getCode());
+        echo "エラーが発生しました。";
+    return false;
+    }}
+
+    // deleteAnswer関数
+    // 書き方　deleteAnswer($answerId);
+    function deleteAnswer($answerId) {
+    try{
+        // コネクト
+        $pdo = Connect();
+        // 削除クエリ
+        $sql = $pdo->prepare('UPDATE answer SET deleteFlg=1 WHERE id=?;');
+        $sql = $sql->execute([$answerId]);
+        // 戻り値
+        return $sql;
+    } catch (PDOException $e) {
+        // ここでエラーメッセージを出力することで、失敗原因がわかる
+        error_log('DB更新エラー: ' . $e->getMessage() . ' SQLSTATE: ' . $e->getCode());
+        echo "エラーが発生しました。";
+    return false;
+    }}
+
+    // getUserName関数
+    // 書き方　getUserName($id,$pdo);
+    function getUserName($id,$pdo){
+        $sql = $pdo->prepare('select name from user where id=?');
+        $sql->execute([$id]);
+        $name = $sql->fetchColumn(); 
+        return $name;
     }
 ?>
