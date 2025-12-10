@@ -13,8 +13,8 @@
     echo '<p>質問</p>';
 
     // 質問内容取得
-    $question = getQuestionById($questionId,$pdo);  
-    
+    $question = getQuestionById($questionId,$pdo);
+
     $err = "";
     // 削除
     if(isset($_POST['delete']) && $_POST['delete']==="削除") {
@@ -33,6 +33,12 @@
     if (isset($question)) {
         //質問IDが正しく取得できた場合のみ表示する
         foreach ($question as $row) {
+
+            //削除対象の質問IDが選択されたときは一覧画面に戻る
+            if ($row['deleteFlg'] == 1) {
+                header('Location: questions.php'); 
+            }
+
             echo '<p">';
             // ユーザの名前を取得する
             $name = getUserName($row['userId'],$pdo);
@@ -81,8 +87,15 @@
             }
         }
 
+    } else {
+        // 登録されていない質問IDの場合、一覧画面にも度折る
+        header('Location: questions.php'); 
     }
 
 ?>
+
+<!-- 戻るボタン -->
+<form action="questions.php" method="get">
+<input type="submit" value="戻る">
 
 <?php require 'footer.php'; ?>
