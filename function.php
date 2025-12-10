@@ -5,6 +5,21 @@
         return new PDO('mysql:host=localhost;dbname=ideastock;charset=utf8', 'staff', 'password');
     }
 
+    // isUser関数
+    // 書き方　isUser($userId, $userPw);
+    function isUser($userId, $userPw){
+        $pdo = Connect();
+        //ユーザID,パスワードの重複チェック
+        $sql = $pdo->prepare('SELECT * FROM user WHERE loginId=? or password=?');
+        $sql->execute([$userId,$userPw]);
+        // 結果判定
+        if ($sql->rowCount() > 0) {
+            return true; // 重複あり
+        }else {
+            return false; // 重複なし
+        }
+    }
+
     // getUser関数
     // 書き方　getUser($userid, $userpw, $pdo);
     function getUser($userid, $userpw, $pdo){
