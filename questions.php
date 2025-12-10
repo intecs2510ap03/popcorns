@@ -60,4 +60,3 @@
 
 ?>
 
-<?php require 'footer.php'; ?>
