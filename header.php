@@ -12,7 +12,9 @@
 	
 
 <h1><a href="index.php" title="ホームに戻る">
-    アイデア倉庫</a></h1>
+    アイデア倉庫
+	<img src="logo.png" alt="ロゴ" class="title-logo">
+</a></h1>
 
 <nav><!-- 　　　メニューバー -->
 	<ul>
