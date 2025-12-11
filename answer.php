@@ -27,7 +27,7 @@
         // ユーザの名前を取得する
         $name = getUserName($row['userId'],$pdo);
         echo '<div class="name">',$name, '<br></div>';
-        echo $row['question'], '<br>';
+        echo '<div class="question">',$row['question'], '<br></div>';
         echo '<div class="date">',$row['date'],'</div>';
         echo '</div>';
     }
@@ -43,6 +43,7 @@
     echo '</textarea>';
     echo '<br>';
     echo '<input type="hidden" name="questionId" value="', $questionId ,'">';
+    echo '<div class="btn-line">';
     echo '<input type="submit" value="登録" class="touroku-btn">';
     echo '</form>';
 
@@ -52,17 +53,17 @@ if (isset($_POST['answer'])) {
     $questionId = (int)$_POST['questionId']; 
     $answer = mb_convert_kana($answer, 's'); // 全角スペースを半角に変換
     if (trim($answer) === "") {
-        echo '回答を入力してください';
+        $err = '回答を入力してください';
     } elseif (mb_strlen($answer) > 250) {
-        echo '回答は250文字以内で入力してください';
+        $err = '回答は250文字以内で入力してください';
     } elseif (addAnswer($questionId,$userId,$answer)) {
         header('Location: detail.php?questionId=' . $questionId); 
     exit;     
-} else {
-    echo '回答の登録に失敗しました';
-    }}
+} echo '<span class="error-message">'.$err. '</span>';
+    }
 
 ?>
+</div>
 </div>
 
 <!-- 戻るボタン -->
