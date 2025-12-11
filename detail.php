@@ -30,7 +30,7 @@
     }
      
     // 表示
-    if (isset($question)) {
+    if ($question) {
         //質問IDが正しく取得できた場合のみ表示する
         foreach ($question as $row) {
 
