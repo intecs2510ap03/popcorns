@@ -2,9 +2,14 @@
 <html lang="ja">
 <meta charset="UTF-8">
 <head>
-	<div class="header-top">
-	<title>アイデア倉庫</title>
+<title>アイデア倉庫</title>
 <link rel="stylesheet" href="./style/style.css"	>
+
+</head>
+
+<body>
+		<div class="header-top">
+	
 
 <h1><a href="index.php" title="ホームに戻る">
     アイデア倉庫</a></h1>
@@ -24,6 +29,4 @@
 	</ul>
 </nav>
 </div>
-
-</head>
-<body>
+<div class="content-wrapper">
