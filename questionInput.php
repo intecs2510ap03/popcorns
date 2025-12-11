@@ -1,15 +1,20 @@
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
+
+<div class="main">
+ <div class="question-section">
+
 <?php
 session_start();
-echo '<th>質問を投稿する</th>';
+
+echo '<h2>質問を投稿する</h2>';
 echo '<br>';
 echo '<form action="questionInput.php" method="post">';
-echo '<textarea name="question" cols="70" rows="4">';
+echo '<textarea name="question" cols="70" rows="4" div class="questionInputbox">';
 echo '</textarea>';
-echo '<br>';
-echo '<input type="submit" value="登録">';
-echo '</form>';
+// echo '<br>';
+echo '<div class="btn-line">';
+echo '<input type="submit" value="登録" class="touroku-btn">';
 
 if (isset($_POST['question'])) {
     $question = mb_convert_kana($_POST['question'], "s");
@@ -21,11 +26,16 @@ if (isset($_POST['question'])) {
         header('Location: questions.php');
         exit();
     }
-    echo $err;
+    echo '<span class="error-message">'.$err. '</span>';
 }
+echo '</div></form>';
+
 echo '<br>';
 echo '<form action="questions.php" method="GET">';
-echo '<input type="submit" value="戻る">';
+echo '<input type="submit" value="戻る" class="btn">';
 echo '</form>';
 ?>
+
+</div>
+</div>
 <?php require 'footer.php'; ?>
