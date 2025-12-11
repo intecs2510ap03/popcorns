@@ -1,18 +1,90 @@
 /* すべてのページに適応される設定 */
-
-body {
-    margin: 0 40px;
+/* 1. ページ全体のマージンをリセット */
+html, body {
+    margin: 0;   /* 画面の端から端まで広がるようにする */
+    padding: 0;
 }
+
 nav ul {
     margin: 30px 0;
-    padding: 0;
+    padding: 0 50px 0 0 ;
     list-style-type: none;
     display: flex;
-    justify-content: left;
+    justify-self: center;
     gap: 40px;
+}
+navi ul li {
+    flex: 1 0 auto;
+  }
+
+.header-top nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.header-top nav ul li a:hover{
+    color: #ffd700;
+    text-decoration: none;
+}
+        
+
+h1{
+    border-left:7px solid #1d7bb5;
+    padding-left: 15px;
+    text-align:left;
+    color:#767676;
+}
+
+h2{
+    border-left:7px solid #1d7bb5;
+    padding-left: 15px;
+    text-align:left;
+    color:#767676;
+}
+ 
+.main{
+    margin:90px auto 90px auto;
+    max-width:1300px;
+}
+
+.content-wrapper {
+    margin: 0 60px;  /*bodyの余白*/
+}
+
+.main form,textarea {
+    display: block;  
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* すべてのページに適応される設定 ヘッダー*/
+
+.header-top{
+    display: flex;
+    color: #f9f9f9;
+    background-color: #1d7bb5;
+    padding: 15px 0 15px 0;
+    width: 100%;
+    justify-content: center;
+
+}
+.header-top h1 a {
+    color: #ffd700; 
+    text-decoration: none; 
+    margin: 50px;
+}
+
+.header-top h1 a:hover {
+    color: #ffffff; /* 例: ホバー時に白色に変化 */
+    text-decoration: none; 
+}
+
+.error-message {
+    color: rgb(228, 82, 82);
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 1.5rem;
+}
 
 /* すべてのページに適応される設定 フッター*/
 
@@ -20,14 +92,126 @@ nav ul {
 
 /* index.php */
 
+.login-name {
+   fo 
+}
+
+.login-pass{
+
+}
+
+
+
+
 /* userAdd.php */
 
 /* questions.php */
 
 /* questioninput.php */
 
+.questionInputbox {
+    border: 4px solid #1d7bb5;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    font-size: 20px;
+    display: inline-block;
+}
+
 /* detail.php */
 
 /* answer.php */
 
+.name{
+    font-weight: bold;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    padding: 5px 0 5px 0;
+}
+.question{
+    line-height: 1.7;
+    padding: 10px 0 10px 20px;
+}
+.date{
+    line-height: 1.7;
+    font-size: 0.8rem;
+    padding: 5px 0 5px 0;
+}
 
+.question-section{
+    margin: 20px auto 20px auto;
+}
+
+
+.questionbox {
+    /* 枠線（ボーダー）を追加 */
+    border: 4px solid #1d7bb5;
+    /* 内容と枠線の間に余白を設定 */
+    padding: 20px;
+    /* 枠の外側に余白を設定 */
+    margin-bottom: 20px;
+    /* 背景色（オプション） */
+    background-color: #d2e4fc6d;
+    font-size: 20px;
+    border-radius: 25px;
+}
+
+.answer-section {
+    display: flex; 
+    flex-direction: column;
+    margin-left:18%;  
+    
+}
+
+.anstexbox {
+    border: 4px solid #1d7bb5;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    font-size: 20px;
+    display: inline-block;
+    
+}
+
+
+
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  color: #f9f9f9;
+  background-color: #1d7bb5;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 2px solid transparent;
+  margin: 30px 0 30px 0;
+}
+
+
+.touroku-btn {
+    display: inline-block; 
+    margin-left: 0; /* または、回答フォームとボタンの間に少しスペースを空ける場合は 10px など */
+    margin-right: auto; /* 他の要素を右に押し付けたい場合 */
+   font-size: 16px;
+   font-weight: bold;
+  color: #1d7bb5;
+  background-color: #f9f9f9;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 2px solid #1d7bb5
+}
+.touroku-btn:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #1d7bb5;     /* 背景色     */
+  background    : #ffd700; 
+  border: 2px solid transparent;    /* 文字色     */
+}
+.touroku-btn-line {
+    display: flex; /* Flexboxを有効にして、中の要素を強制的に横に並べる */
+    align-items: center; /* 縦方向の中央揃え */
+    gap: 15px; /* ボタンと文字の間に隙間を作る */
+    margin: 20px; /* 必要に応じて調整 */
+}
