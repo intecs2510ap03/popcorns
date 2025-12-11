@@ -1,10 +1,13 @@
-<?php session_start(); ?>
+userAdd.php<?php session_start(); ?>
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
 <?php
-    $err="";
-    $loginId=$password=$name='';
+    $loginId=$password=$name=$err="";
+
     if(!isset($_SESSION['user'])){
+        // $sql=$pdo->prepare('insert into user values(null,?,?,?)');
+        // $sql->execute([$_POST['name'],$_POST['loginId'],$_POST['password']]);
+        // $name=$_POST['name'];
     echo '<form action="userAdd.php" method="post">';
     echo '<h1>利用者登録</h1>';
     echo '<table>';
@@ -28,13 +31,19 @@
         $userId=$_POST['userId'];
     
      if (preg_match('/^(?=.*[a-z])(?=.*[0-9])[a-z0-9]{6,10}$/',$password)) {
-            if (preg_match('/^(?=.*[a-z])(?=.*[0-9])[a-z0-9]{8,10}$/',$userId)) {
-        $err='成功';
+            if (preg_match('/^(?=.*[a-z])[a-z]{8,10}$/',$userId)) {
+            // $err='成功';
+            $result = isUser($userId,$password);
+            if ($result) {
+                $err= 'このユーザーIDまたはパスワードは使用できません';
+            } else {
+                $err= '登録できるよ';
+            }
         } else {
-        $err='利用者IDは8文字以上10文字以下で入力してください。';
+        $err='ユーザーIDは8文字以上10文字以下で入力してください。';
      }
         } else {
-        $err='利パスワードは6文字以上10文字以下で入力してください。';
+        $err='利用パスワードは6文字以上10文字以下で入力してください。';
      }
     }
 
