@@ -73,7 +73,12 @@
     function getQuestionById($id,$pdo){
         $sql = $pdo->prepare('select * from question where id=?');
         $sql->execute([$id]);
-        return $sql;
+		// 結果判定
+		if ($sql->rowCount() > 0) {	
+            return $sql; // データあり	
+		}else {	
+			return false; // データなし	
+		}
     }
 
     // getAnswersByQuestionId関数
