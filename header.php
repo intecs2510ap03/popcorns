@@ -7,13 +7,12 @@
 
 </head>
 
-<body>
+<body id="top">
 		<div class="header-top">
 	
 
 <h1><a href="index.php" title="ホームに戻る">
     アイデア倉庫
-	<img src="logo.png" alt="ロゴ" class="title-logo">
 </a></h1>
 
 <nav><!-- 　　　メニューバー -->
