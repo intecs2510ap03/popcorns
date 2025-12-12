@@ -10,19 +10,17 @@
     } else {
         echo '<form action="userAdd.php" method="post">';
         echo '<h1>利用者登録</h1>';
-        echo '<table>';
-        echo '<tr><th>表示名</th>';
-        echo '<td><input type="text" name="viewName" required maxlength="10">';
-        echo '</td></tr>';
-        echo '<tr><th>ユーザーID</th>';
-        echo '<td><input type="text" name="userId" required maxlength="10">';
-        echo '</td></tr>';
-        echo '<tr><th>パスワード</th>';
-        echo '<td><input type="text" name="pass" required maxlength="10">';
-        echo '</td></tr>';
-        echo '<tr><td>';
+        echo '表示名';
+        echo '<input type="text" name="viewName" required maxlength="10"><BR>';
+        echo 'ユーザーID';
+        echo '<input type="text" name="userId" required maxlength="10"><BR>';
+        echo 'パスワード';
+        echo '<input type="text" name="pass" required maxlength="10"><BR>';
         echo '<input type="submit" value="登録">';
-        echo '</td>';
+        echo '</form>';
+        echo '<form action="index.php" method="GET">';
+        echo '<input type="submit" value="戻る">';
+        echo '</form>';
     }
     // 入力された内容　パス　かつ　ID　が入力されていたら　TR
     if (isset($_POST['pass']) && isset($_POST['userId']) && isset($_POST['viewName'])) {
@@ -65,11 +63,8 @@
     }else{
     $err='表示名は10文字以下の日本語で入力してください。';
     }}
-            echo '<td>', $err ,'</td>';
+            echo $err ;
+
+
 ?>
-        </tr>
-        <tr><td><a href="index.php"><input type="submit" value="戻る"></a></td>
-        </tr>
-    </table>
-    </form>
 <?php require 'footer.php';?>
