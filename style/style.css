@@ -43,9 +43,15 @@ h2{
     text-align:left;
     color:#767676;
 }
+h3{
+    margin: 30px 0 30px 0;
+    text-align:left;
+    font-size: 25px;
+    color: rgb(228, 82, 82);
+}
  
-.main{
-    margin:90px auto 90px auto;
+.main {
+    margin:90px 100px 90px 100px;
     max-width:1300px;
 }
 
@@ -63,11 +69,14 @@ h2{
 
 .header-top{
     display: flex;
+    align-items: center;
     color: #f9f9f9;
     background-color: #1d7bb5;
     padding: 15px 0 15px 0;
     width: 100%;
     justify-content: center;
+
+
 
 }
 .header-top h1 a {
@@ -77,7 +86,8 @@ h2{
     gap: 15px;              /* 画像と文字の間のスキマ */
     text-decoration: none;
     color: #ffd700;
-    margin: auto 15px auto 15px;
+    padding-right: 30px;
+    margin: 15px 15px 15px 45px;
 }
 
 .header-top h1 a:hover {
@@ -99,7 +109,29 @@ h2{
 
 /* すべてのページに適応される設定 フッター*/
 
+.gotop {
+  text-align: right;
+  margin: -100px 0px 30px 160px;
+  position: absolute;
+}
+.gotop img {
+  width: 13%;
+  height: auto;}
 
+.footer-lin {
+    text-align: center;
+    color: #FFF;
+    font-size: 0.8rem;
+    padding: 15px 0 15px 0;
+    background-color: #1d7bb5;
+    position: relative;
+    width: 100%;
+}
+.footer-lin p {
+    font-size: 1.7rem;
+    margin: 45px;
+}
+    
 
 /* index.php */
 
@@ -212,6 +244,57 @@ input[type="password"] {
 
 /* detail.php */
 
+.answers-section {
+    display: flex; 
+    flex-direction: column;
+    margin-left:18%;  
+}
+
+.answerbox {
+    display: block;
+    /* 枠線（ボーダー）を追加 */
+    border: 4px solid #1d7bb5;
+    /* 内容と枠線の間に余白を設定 */
+    padding: 20px;
+    /* 枠の外側に余白を設定 */
+    margin:20px 0 10px 0;
+    /* 背景色（オプション） */
+    background-color: #FFF;
+    font-size: 20px;
+    border-radius: 25px;
+}
+.answer-btn{
+    display: inline-block; 
+    margin: 0 0 10px 0;
+   font-size: 16px;
+    font-weight: bold;
+  color: #FFF;
+  background-color: #1d7bb5;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 3px solid #1d7bb5
+}
+.answer-btn:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #1d7bb5;     /* 背景色     */
+  background    : #ffd700; 
+  border: 3px solid transparent;    /* 文字色     */
+}
+.delete-btn{
+    display: inline-block; 
+    margin: 0 0 10px 0;
+   font-size: 16px;
+    font-weight: bold;
+  color: #1d7bb5;
+  background-color: #f9f9f9;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 3px solid #1d7bb5
+}
+
+
 /* answer.php */
 
 .name{
@@ -246,7 +329,34 @@ input[type="password"] {
     background-color: #d2e4fc6d;
     font-size: 20px;
     border-radius: 25px;
+    position: relative;
+    
 }
+/* 疑似要素（:before と :after）の共通設定 */
+.questionbox:before,
+.questionbox:after {
+    content: ""; /* 文字ではなく、空の要素として扱います */
+    position: absolute;
+    bottom: 0;
+    background-color: #1d7bb5; /* 色を指定 */
+    border-radius: 50%; /* ★ポイント：要素を真円にします */
+    display: block; /* ボックスとして表示します */
+}
+
+/* 小さい方の丸 */
+.questionbox:before {
+    width: 15px; /* サイズ（直径） */
+    height: 15px; /* サイズ（直径） */
+    left: -60px;
+}
+
+/* 大きい方の丸 */
+.questionbox:after {
+    width: 23px; /* サイズ（直径） */
+    height: 23px; /* サイズ（直径） */
+    left: -40px;
+}
+
 
 .answer-section {
     display: flex; 
