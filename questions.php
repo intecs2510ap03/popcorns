@@ -26,8 +26,8 @@
     
     
     // ソートリンク
-    echo ' 並び替え: <a href="?sort=new">新着順</a> |
-          <a href="?sort=old">古い順</a>';
+    echo '<div class="sort"> 並び替え: <a href="?sort=new">新着順</a> |
+          <a href="?sort=old">古い順</a></div>';
 
     // ソート機能
     $sort = $_GET['sort'] ?? 'new';
@@ -44,11 +44,11 @@
 
     echo '<form action="questions.php" method="GET">';
     echo '<input type="text" name="keyword"><br>';
-    echo '<input type="submit" value="検索">';
+    echo '<input type="submit" value="検索" class="search-btn">';
     echo '</form>';
 
     echo '<form action="questions.php" method="GET">';
-    echo '<input type="submit" value="戻る">';
+    echo '<input type="submit" value="戻る" class="back-btn">';
     echo '</form>';
 
     if(isset($_GET['keyword'])){
@@ -78,27 +78,30 @@
 
             // deleteFlg判定
             if ($row['deleteFlg']==0) {
+                echo '<div class="questionbox-detail">';
                 echo '<p>';
                 // ユーザの名前を取得する
                 $name = getUserName($row['userId'],$pdo);
-                echo $name, '<br>';
+                echo '<div class="name">',$name, '<br></div>';
                  echo mb_strimwidth($row['question'], 0, 60, "...") , '<br>';
                 echo $row['date'];
+                echo '</div>';
+            
                 
                 // 詳細ボタン
                 echo '<form action="detail.php" method="get">';
                 echo '<input type="hidden" name="questionId" value="', $row['id'] ,'">';
-                echo '<input type="submit" value="詳細">';
+                echo '<input type="submit" value="詳細" class="detail-btn">';
                 echo '</form>';
 
                 // 削除ボタン
                 if ((isset($_SESSION['user']) && $_SESSION['user']['id'] == $row['userId'])) {
                     echo '<form action="questions.php" method="POST">';
                     echo '<input type="hidden" name=questionId value="', $row['id']  ,'">';
-                    echo '<input type="submit" name="delete" value="削除">';
+                    echo '<input type="submit" name="delete" value="削除" class="delete-btn">';
                     echo '</form>';
                 }
-
+                
                 echo '</p>';
             }
         }
@@ -106,4 +109,6 @@
     }
 
 ?>
+
+<?php require 'footer.php'; ?>
 
