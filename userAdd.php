@@ -10,16 +10,16 @@
     } else {
         echo '<form action="userAdd.php" method="post">';
         echo '<h1>利用者登録</h1>';
-        echo '表示名';
-        echo '<input type="text" name="viewName" required maxlength="10"><BR>';
-        echo 'ユーザーID';
-        echo '<input type="text" name="userId" required maxlength="10"><BR>';
-        echo 'パスワード';
+        echo '<div class="names"> 表示名 </div>';
+        echo '<input type="text" name="viewName" required maxlength="10" class="login-name"><BR>';
+        echo '<div class="user"> ユーザーID </div>';
+        echo '<input type="text" name="userId" required maxlength="10" class="login-pass"><BR>';
+        echo '<div class="pass"> パスワード </div>';
         echo '<input type="text" name="pass" required maxlength="10"><BR>';
-        echo '<input type="submit" value="登録">';
+        echo '<input type="submit" value="登録" class="touroku-btn">';
         echo '</form>';
         echo '<form action="index.php" method="GET">';
-        echo '<input type="submit" value="戻る">';
+        echo '<input type="submit" value="戻る" class="btn">';
         echo '</form>';
     }
     // 入力された内容　パス　かつ　ID　が入力されていたら　TR
@@ -63,8 +63,9 @@
     }else{
     $err='表示名は10文字以下の日本語で入力してください。';
     }}
-            echo $err ;
+            echo '<span class="error-message">'.$err. '</span>';
 
 
 ?>
+
 <?php require 'footer.php';?>
