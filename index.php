@@ -6,14 +6,23 @@
 <div class="main">
  
 <!--会員ログインチェック -->
+<div class="login-section">
 <?php
 
         if (isset($_SESSION['user'])) {
-            echo 'ログイン中です';
+            echo '<div class="login-now"> ログイン中です</div>';
+            echo '<div class="questionInput-btn">';
+            echo '<a href=questionInput.php>質問する</a>';
+            echo '</div><br>';
+            echo '<div class="questions-btn">';
+            echo '<a href="questions.php">質問一覧</a>';
+            echo '</div>';
+            echo '</div>';
+
         } else {
             echo '<form action ="login.php" method="post">';
-            echo 'ログイン名  <input type="text" name="userId" class="login-name"><br>';
-            echo 'パスワード  <input type="password" name="userPw" class="login-pass"><br>';
+            echo '<div class="user"> ログイン名  </div><input type="text" name="userId" class="login-name"><br>';
+            echo '<div class="pass"> パスワード  </div><input type="password" name="userPw" class="login-pass"><br>';
             echo '<input type="submit" value="ログイン" class="login-btn">';
             echo '</form>';
         }
