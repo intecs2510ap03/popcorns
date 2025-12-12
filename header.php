@@ -24,6 +24,7 @@
 		<?php
 			if (isset($_SESSION['user'])) {
 				echo '<li><a href="logout.php">ログアウト</a></li>';
+				echo '<li><a href="userPwChg.php">パスワード変更</a></li>';
 			}
 		?>
 

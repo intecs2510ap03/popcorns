@@ -36,12 +36,13 @@
     return $sql->execute([$userId,$userPw,$viewName]);
     }
 
-    // getQuestion関数
-    // 書き方　getQuestion($pdo);
-    function getQuestion($pdo){
-        $sql = $pdo->query('select * from question');
-        $user_All = $sql->fetchAll();
-        return $user_All;
+  // getQuestion関数
+    // 書き方　getQuestion($order);
+    function getQuestion($order){
+        $pdo = Connect();
+        $sql = $pdo->prepare("SELECT * FROM question $order");
+        $sql->execute();
+        return $sql;
     }
 
 	// addQuestion関数
@@ -72,7 +73,12 @@
     function getQuestionById($id,$pdo){
         $sql = $pdo->prepare('select * from question where id=?');
         $sql->execute([$id]);
-        return $sql;
+		// 結果判定
+		if ($sql->rowCount() > 0) {	
+            return $sql; // データあり	
+		}else {	
+			return false; // データなし	
+		}
     }
 
     // getAnswersByQuestionId関数
