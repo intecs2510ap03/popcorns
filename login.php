@@ -2,7 +2,10 @@
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
 
+<div class="main">
+    <h2>ログイン</h2>
 <!--会員ログインチェック -->
+<div class="login-section">
 <?php
     $msg = '';
 
@@ -32,7 +35,7 @@
         if (isset($_SESSION['user'])) {
             $msg = 'ログインに成功しました。';
         } else {
-            $msg = 'ログインまたはパスワードが違います。';
+            $msg = '<h3>ログインまたはパスワードが違います。</h3>';
         }
     }
 
@@ -45,11 +48,16 @@
         // ログイン失敗時はlogin.phpに戻る
         echo $msg;
         echo '<form action ="login.php" method="post">';
-        echo 'ログイン名  <input type="text" name="userId"><br>';
-        echo 'パスワード  <input type="password" name="userPw"><br>';
-        echo '<input type="submit" value="ログイン">';
+        echo '<div class="user"> ログイン名  </div><input type="text" name="userId" class="login-name"><br>';
+        echo '<div class="pass"> パスワード  </div><input type="password" name="userPw" class="login-pass"><br>';
+        echo '<input type="submit" value="ログイン" class="login-btn">';
+       // echo 'ログイン名  <input type="text" name="userId"><br>';
+        //echo 'パスワード  <input type="password" name="userPw"><br>';
+        // echo '<input type="submit" value="ログイン">';
         echo '</form>';
     }
 ?>
 
+</div>
+</div>
 <?php require 'footer.php'; ?>
