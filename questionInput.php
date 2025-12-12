@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
 
@@ -5,8 +6,10 @@
  <div class="question-section">
 
 <?php
-session_start();
-
+if (!isset($_SESSION['user'])) {
+    // 登録されていない質問IDの場合、一覧画面に戻る
+    header('Location: questions.php');
+}
 echo '<h2>質問を投稿する</h2>';
 echo '<br>';
 echo '<form action="questionInput.php" method="post">';

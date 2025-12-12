@@ -18,13 +18,9 @@
         }else{
             $err = "不正アクセスです。";
     }
-
     if (isset($_SESSION['user'])) {
         echo '<a href=questionInput.php>質問する</a><br>';
     }
-    
-    
-    
     // ソートリンク
     echo ' 並び替え: <a href="?sort=new">新着順</a> |
           <a href="?sort=old">古い順</a>';
@@ -48,12 +44,11 @@
     echo '</form>';
 
     echo '<form action="questions.php" method="GET">';
-    echo '<input type="submit" value="戻る">';
+    echo '<input type="submit" value="クリア">';
     echo '</form>';
 
     if(isset($_GET['keyword'])){
         $pdo = Connect();
-        $keyword = $_GET['keyword'];
         $sql = $pdo->prepare('select * from question where deleteFlg=0 and question like ?');
         $sql->execute(['%'.$_GET['keyword'].'%']);
         $serch_All = $sql->fetchAll();
@@ -66,6 +61,28 @@
                     echo $name, '<br>';
                     echo mb_strimwidth($row['question'], 0, 60, "...") , '<br>';
                     echo $row['date'];
+
+                    $count = $row['id'];
+                    $sql1 = $pdo->prepare('SELECT questionId, COUNT(questionId) FROM answer WHERE deleteFlg = 0 and questionId=?');
+                    $sql1->execute([$count]);
+                    $answerCount = $sql1->fetch();
+                    echo '<br>';
+                    echo '回答数:',$answerCount['COUNT(questionId)'];
+
+                    // 詳細ボタン
+                    echo '<form action="detail.php" method="get">';
+                    echo '<input type="hidden" name="questionId" value="', $row['id'] ,'">';
+                    echo '<input type="submit" value="詳細">';
+                    echo '</form>';
+
+                    // 削除ボタン
+                    if ((isset($_SESSION['user']) && $_SESSION['user']['id'] == $row['userId'])) {
+                        echo '<form action="questions.php" method="POST">';
+                        echo '<input type="hidden" name=questionId value="', $row['id']  ,'">';
+                        echo '<input type="submit" name="delete" value="削除">';
+                        echo '</form>';
+                    }
+                    echo '</p>';
                 }
             }
         }else{
@@ -84,6 +101,13 @@
                 echo $name, '<br>';
                  echo mb_strimwidth($row['question'], 0, 60, "...") , '<br>';
                 echo $row['date'];
+
+                $count = $row['id'];
+                $sql1 = $pdo->prepare('SELECT questionId, COUNT(questionId) FROM answer WHERE deleteFlg = 0 and questionId=?');
+                $sql1->execute([$count]);
+                $answerCount = $sql1->fetch();
+                echo '<br>';
+                echo '回答数:',$answerCount['COUNT(questionId)'];
                 
                 // 詳細ボタン
                 echo '<form action="detail.php" method="get">';
@@ -97,13 +121,18 @@
                     echo '<input type="hidden" name=questionId value="', $row['id']  ,'">';
                     echo '<input type="submit" name="delete" value="削除">';
                     echo '</form>';
+
+                    echo '<form action="qqq.php" method="post">';
+                    echo '<input type="hidden" name="questionId" value="', $row['id']  ,'">';
+                    echo '<input type="submit" value="編集">';
+                    echo '</form>';
+                }
                 }
 
                 echo '</p>';
             }
         }
         }
-    }
+    
 
 ?>
-

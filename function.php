@@ -131,4 +131,12 @@
         $name = $sql->fetchColumn(); 
         return $name;
     }
+
+    // edit関数
+    // 書き方　edit($_POST['update'], $_SESSION['user']['id'], );
+    function edit($question, $userId){
+    $pdo = Connect();
+    $sql = $pdo->prepare('update question set question = ? where id = ?');
+    return $sql->execute([$question, $userId]);
+    }
 ?>
