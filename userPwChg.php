@@ -2,6 +2,7 @@
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
 
+<div class="main">
 <!--会員パスワード変更 -->
 <?php
     // PDO関数
@@ -31,7 +32,7 @@
                     $result=$sql->execute([$userNewPw,$loginId]);
                     if ($result) {
                         $successFlg = 1;
-                        $msg =  "パスワードを変更しました。再度ログインをおねがいします";
+                        $msg =  'パスワードを変更しました。再度ログインをおねがいします';
                     } else {
                         $msg = 'パスワードの変更が失敗しました';
                     }
@@ -44,16 +45,16 @@
         } else {
             $msg = '前回のパスワードが一致しません';
         }
-    }
+    }    
+    echo '<span class="error-message">'.$msg.'</span>';
 
     if (isset($_SESSION['user'])) {
-        echo $msg;
         if (!$successFlg) {
             // パスワード変更が成功しなかったときの処理
             echo '<form action=userPwChg.php method="post">';
-            echo '旧パスワード  <input type="password" name="userOldPw"><br>';
-            echo '新パスワード  <input type="password" name="userNewPw"><br>';
-            echo '<input type="submit" value="変更">';
+            echo '<div class="newpass">旧パスワード </div><input type="password" name="userOldPw"><br>';
+            echo '<div class="oldpass">新パスワード  </div><input type="password" name="userNewPw"><br>';
+            echo '<input type="submit" value="変更" class="touroku-btn">';
             echo '</form>';
         } else {
             // パスワード変更が成功したときの処理
