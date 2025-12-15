@@ -20,13 +20,9 @@
         }else{
             $err = "不正アクセスです。";
     }
-
     if (isset($_SESSION['user'])) {
         echo '<a href=questionInput.php class="question-go">質問する</a><br>';
     }
-    
-    
-    
     // ソートリンク
     echo '<div class="sort"> 並び替え: <a href="?sort=new" class="new">新着順</a> |
           <a href="?sort=old" class="old">古い順</a></div>';
@@ -56,7 +52,6 @@
 
     if(isset($_GET['keyword'])){
         $pdo = Connect();
-        $keyword = $_GET['keyword'];
         $sql = $pdo->prepare('select * from question where deleteFlg=0 and question like ?');
         $sql->execute(['%'.$_GET['keyword'].'%']);
         $serch_All = $sql->fetchAll();
@@ -147,9 +142,7 @@
                 echo '</p></div>';
             }
         }
-        }
     }
-
 ?>
 
 <?php require 'footer.php'; ?>
