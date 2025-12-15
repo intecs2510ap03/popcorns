@@ -15,6 +15,11 @@
 
     // 質問内容取得
     $question = getQuestionById($questionId,$pdo);
+
+    if (!isset($_SESSION['user'])) {
+        // 登録されていない質問IDの場合、一覧画面に戻る
+        header('Location: questions.php');
+    }
 ?>
     
  <div class="question-section">
