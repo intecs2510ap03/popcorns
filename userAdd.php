@@ -1,12 +1,13 @@
 <?php session_start(); ?> <!-- /*sessionでデータを繋げてる* -->
 <?php require 'header.php'; ?>
 <?php require 'function.php';?>
+<div class="main">
 <?php
     // 空にしてる
     $loginId=$password=$name=$err=""; 
     // もしユーザーが空なら登録（ログインしてない）、ユーザーが有なら会員です。　
     if(isset($_SESSION['user'])){//
-        echo 'あなたはすでに会員です。';
+        echo '<h2>あなたはすでに会員です。</h2>';
     } else {
         echo '<form action="userAdd.php" method="post">';
         echo '<h1>利用者登録</h1>';
