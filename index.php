@@ -16,6 +16,10 @@
             echo '</div><br>';
             echo '<div class="questions-btn">';
             echo '<a href="questions.php">質問一覧</a>';
+            echo '</div><br>';
+            echo '</div>';
+            echo '<div class="questions-btn">';
+            echo '<a href="omikuji.php">おみくじ</a>';
             echo '</div>';
             echo '</div>';
 
