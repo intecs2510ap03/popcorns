@@ -97,8 +97,8 @@ h3{
 
 .error-message {
     color: rgb(228, 82, 82);
-    font-weight: bold;
-    margin-left: 20px;
+    font-weight: bold; /* 太字  */
+    margin: 20px 0 30px 20px;
     font-size: 1.5rem;
 }
 
@@ -158,7 +158,7 @@ h3{
 .questionInput-btn a:hover {
     font-weight: bold;
 	background-color: #ffd700;
-	border: none
+	border: none;
 }
 
 .questions-btn a{
@@ -175,24 +175,17 @@ h3{
 .questions-btn a:hover {
     font-weight: bold;
 	background-color: #ffd700;
-	border: none
+	border: none;
 }
 
-.user{
-    border-left:7px solid #1d7bb5;
+.user,.pass,.names{
+    border-left:23px solid #ffd700;
     padding-left: 15px;
     font-weight: bold;
     color:#767676;
     margin-bottom: 10px;
 }
 
-.pass{
-    border-left:7px solid #1d7bb5;
-    padding-left: 15px;
-    font-weight: bold;
-    color:#767676;
-    margin-bottom: 10px;
-}
 
 .login-btn{
     display: inline-block; 
@@ -228,7 +221,121 @@ input[type="password"] {
 
 /* userAdd.php */
 
+/* userPwChg.php */
+
+.newpass,.oldpass{
+    border-left:35px solid #ffd700;
+    padding: 0 20px 0 20px;
+    color: #767676;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
 /* questions.php */
+
+.sort,.new,.old{
+    color: #1d7bb5;
+    margin: 20px 20px 10px 20px;
+    font-weight: bold;
+}
+.sort{
+    font-size: 1.2rem;
+}
+.new:hover{
+    color: #ffd700;
+}
+
+.old:hover{
+    color: #ffd700;
+}
+
+.question-go{
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  color: #1d7bb5;
+  background-color: #FFF;
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 3px solid #1d7bb5;
+  margin: 30px 20px 20px 0px;
+}
+.question-go:hover {
+ box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #1d7bb5;     /* 背景色     */
+  background    : #ffd700; 
+  border: 2px solid transparent;    /* 文字色     */
+}
+.back-btn {
+  display: inline-block;
+  font-size: 16px;
+  color: #f9f9f9;
+  background-color: #1d7bb5;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 3px solid transparent;
+  margin: 0px 0 20px 0;
+}
+
+.detail-btn{
+    display: inline-block;
+  font-size: 16px;
+  color: #1d7bb5;
+  background-color: #FFF;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 3px solid #1d7bb5;
+  margin: 10px 0 10px 0;
+}
+.deletes-btn{
+    display: inline-block; 
+   font-size: 16px;
+    font-weight: bold;
+  color: #f9f9f9;
+  background-color: #1d7bb5;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 3px solid #1d7bb5;
+}
+
+.search-btn{
+  display: inline-block;
+  font-size: 16px;
+  color: #1d7bb5;
+  background-color: #FFF;
+  border-radius: 20%;
+  padding: 12px 20px 12px 20px;
+  transition: .4s;
+  border: 3px solid #1d7bb5;
+  margin: 10px 0 10px 30px;
+}
+
+.questionbox-detail {
+    /* 枠線（ボーダー）を追加 */
+    border: 4px solid #1d7bb5;
+    /* 内容と枠線の間に余白を設定 */
+    padding: 20px;
+    /* 枠の外側に余白を設定 */
+    margin-bottom: 20px;
+    /* 背景色（オプション） */
+    background-color: #d2e4fc6d;
+    font-size: 20px;
+    border-radius: 25px;
+    position: relative;
+}
+.kaitousuu{
+    line-height: 1.7;
+    color: #767676;
+    padding: 5px 0 5px 0;
+}
 
 /* questioninput.php */
 
@@ -242,7 +349,9 @@ input[type="password"] {
     display: inline-block;
 }
 
+
 /* detail.php */
+
 
 .answers-section {
     display: flex; 
@@ -291,7 +400,8 @@ input[type="password"] {
   border-radius: 20%;
   padding: 12px 20px 12px 20px;
   transition: .4s;
-  border: 3px solid #1d7bb5
+  border: 3px solid #1d7bb5;
+  
 }
 
 
