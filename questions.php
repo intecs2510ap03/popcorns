@@ -98,7 +98,7 @@
             echo '</div>';
         }
     }
-
+    echo '</div>';
     if(!isset($_GET['keyword'])){
     if (isset($question_all)) {
         foreach ($question_all as $row) {
