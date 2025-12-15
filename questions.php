@@ -142,7 +142,7 @@
                 echo '</p></div>';
             }
         }
-    }
+    }}
 ?>
 
 <?php require 'footer.php'; ?>
