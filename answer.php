@@ -11,7 +11,11 @@
     $pdo = Connect();
 
     // 質問Idを変数に格納
-    $questionId = $_REQUEST['questionId'];
+    if (isset($_REQUEST['questionId'])) {
+        $questionId = $_REQUEST['questionId'];
+    } else {
+        header('Location: questions.php'); 
+    }
 
     // 質問内容取得
     $question = getQuestionById($questionId,$pdo);
