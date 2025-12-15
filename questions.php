@@ -49,7 +49,7 @@
     echo '<input type="submit" value="戻る" class="back-btn"><br>';
     echo '</form>';
   
-    echo '<div class="questionbox-detail">';
+   
     if(isset($_GET['keyword'])){
         $pdo = Connect();
         $sql = $pdo->prepare('select * from question where deleteFlg=0 and question like ?');
@@ -58,7 +58,7 @@
         if(!empty($serch_All)){
             foreach ($serch_All as $row) {
                 if ($row['deleteFlg']==0) {
-                    echo '<p>';
+                    echo '<p><div class="questionbox-detail">';';
                     // ユーザの名前を取得する
                     $name = getUserName($row['userId'],$pdo);
                     echo '<div class="name">',$name, '</div><br>';
