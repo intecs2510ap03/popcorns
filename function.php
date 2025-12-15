@@ -133,10 +133,10 @@
     }
 
     // edit関数
-    // 書き方　edit($_POST['update'], $_SESSION['user']['id'], );
-    function edit($question, $userId){
+    // 書き方　edit($_POST['update'], $_POST['questionId']);
+    function edit($question, $questionId){
     $pdo = Connect();
     $sql = $pdo->prepare('update question set question = ? where id = ?');
-    return $sql->execute([$question, $userId]);
+    return $sql->execute([$question, $questionId]);
     }
 ?>
